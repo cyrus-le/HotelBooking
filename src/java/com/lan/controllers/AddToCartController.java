@@ -30,9 +30,9 @@ import com.lan.dtos.CartObject;
 @WebServlet(name = "AddToCartController", urlPatterns = {"/AddToCartController"})
 public class AddToCartController extends HttpServlet {
 
-    private final static  Logger LOGGER = Logger.getLogger(AddToCartController.class);
+    private final static Logger LOGGER = Logger.getLogger(AddToCartController.class);
     private final static String VIEW_CART_PAGE = "ViewCartPage";
-    private final static  String SEARCH_PAGE = "search";
+    private final static String SEARCH_PAGE = "search";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -57,8 +57,6 @@ public class AddToCartController extends HttpServlet {
                 String quantityStr = request.getParameter("quantity");
                 String checkInDateStr = request.getParameter("txtCheckInDate");
                 String checkOutDateStr = request.getParameter("txtcCheckOutDate");
-                System.out.println(checkInDateStr);
-                System.out.println(checkOutDateStr);
 
                 int hotelID = Integer.parseInt(hotelIDStr);
                 int roomType = 1;
@@ -73,7 +71,7 @@ public class AddToCartController extends HttpServlet {
                 Date checkInDate, checkOutDate;
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 java.util.Date parsed;
-                if (checkInDateStr != null && !checkInDateStr.isEmpty()) {
+                 if (checkInDateStr != null && !checkInDateStr.isEmpty()) {
                     parsed = dateFormat.parse(checkInDateStr);
                     checkInDate = new Date(parsed.getTime());
                 } else {
@@ -120,7 +118,7 @@ public class AddToCartController extends HttpServlet {
                 }
             }
         } catch (NumberFormatException | SQLException | ParseException | NamingException e) {
-            LOGGER.error("Error AddToCartController at: "+e.getMessage());
+            LOGGER.error("Error AddToCartController at: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

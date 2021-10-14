@@ -25,12 +25,14 @@ import org.apache.log4j.Logger;
 public class FeedbackController extends HttpServlet {
 
     private final static Logger LOGGER = Logger.getLogger(FeedbackController.class);
+    private final static String FEEDBACK_DETAIL = "feedbackDetail";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
             int point = Integer.parseInt(request.getParameter("cboFeedback"));
+            String orderID = request.getParameter("orderID");
             int orderDetailID = Integer.parseInt(request.getParameter("txtOrderDetailID"));
             String userID = request.getParameter("txtUserID");
             FeedbackDAO dao = new FeedbackDAO();
@@ -42,10 +44,12 @@ public class FeedbackController extends HttpServlet {
             dto.setPoint(point);
             dao.insert(dto);
 
+        
+
         } catch (NumberFormatException | NoSuchAlgorithmException | SQLException | NamingException e) {
             LOGGER.fatal("Error FeedbackController at: " + e.getMessage());
         } finally {
-            request.getRequestDispatcher("search").forward(request, response);
+            request.getRequestDispatcher(FEEDBACK_DETAIL).forward(request, response);
         }
     }
 

@@ -32,8 +32,10 @@ public class FeedbackDetailController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = FEEDBACK_PAGE;
+        String orderID;
         try {
-            String orderID = request.getParameter("orderID");
+            orderID = request.getParameter("orderID");
+           
             OrderDetailsDAO orderDetailsDao = new OrderDetailsDAO();
             FeedbackDAO feedbackDAO = new FeedbackDAO();
 
