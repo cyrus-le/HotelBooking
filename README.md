@@ -5,7 +5,7 @@
 > - Login
 > - Display - Search
 > - Registration
-> - Booking (Error at choose the date of booking)
+> - Booking (Error at choosing the date of booking)
 > - Booking History
 > - Booking confirm by email
 > - Feedback on the quality of room service
